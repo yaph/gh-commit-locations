@@ -6,6 +6,7 @@
 import csv, json, re
 from geonamescache import GeonamesCache
 
+commits_by_countries = {}
 gc = GeonamesCache()
 countries = gc.get_countries()
 countries_by_names = gc.get_countries_by_names()
@@ -14,6 +15,7 @@ us_states_by_names = gc.get_us_states_by_names()
 
 re_ignore = re.compile(r'[\.\(\)\d-]')
 re_ws = re.compile(r'\w{2,}')
+
 
 def test_locs(locs):
     for loc in locs:
@@ -39,6 +41,7 @@ def test_locs(locs):
             if 1 == len(cities):
                 return countries[cities[0].values()[0]['countrycode']]['name']
 
+
 def determine_country(locstr, langcnt):
     """Try to determine country from given location string."""
 
@@ -50,7 +53,6 @@ def determine_country(locstr, langcnt):
             return country
     print('%s, %d' % (loc, langcnt))
 
-commits_by_countries = {}
 
 fcsv = open('langcnt_by_loc.csv', 'rb')
 reader = csv.reader(fcsv)
@@ -69,7 +71,7 @@ for c in commits_by_countries:
     popcnt = float(countries_by_names[c]['population'])
     if popcnt > 0
         by_capita = commits_by_countries[c]['commits'] / popcnt
-        by_100k = by_capita * 100000
+        by_100k = round(by_capita * 100000, 2)
     else:
         by_capita = 0
         by_100k = 0
