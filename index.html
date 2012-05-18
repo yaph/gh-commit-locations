@@ -1,17 +1,19 @@
 <html>
 <head>
-<title>GitHub Commit Count Map</title>
-<link href="bootstrap.min.css" rel="stylesheet">
+<title>GitHub Commit Map</title>
+<link href="http://twitter.github.com/bootstrap/assets/css/bootstrap.css" rel="stylesheet">
 <style type="text/css">
 select {width:200px;}
 .w300 {width:300px;float:left;}
 .form-horizontal .control-label {width:100px;}
 .form-horizontal .controls {margin-left: 120px;}
+#sliderText {width:120px;}
 </style>
 </head>
 <body>
 <div class="container">
-  <div id="mapcontrols" class="row">
+
+  <div id="mapControls" class="row">
   <form class="form-horizontal">
   <div class="w300">
     <label class="control-label" for="mapRegion">Region</label>
@@ -74,21 +76,30 @@ select {width:200px;}
     <label class="control-label" for="colorScheme">Colors</label>
     <div class="controls">
       <select id="colorScheme" name="colorScheme" class="mapSettings">
-        <option value="0" selected="selected">Divering Red to Blue</option>
+        <option value="0" selected="selected">Diverging Red to Blue</option>
         <option value="1">Sequential Yellow to Red</option>
         <option value="2">Sequential Blue to Green</option>
       </select>
     </div>
   </div>
-
-  <div><input id="slider1" type="range" min="0" max="500" step="10" onchange="printValue('slider1','rangeValue1')"><input id="rangeValue1" type="text" size="2"></div>
-  </form>
   </div>
 
   <div class="row">
     <div id="map" style="width: 900px; height: 500px;" class="span12"></div>
   </div>
+
+  <div id="mapSlider" class="row">
+  <div class="span12">
+    <label for="sliderRange">Set displayed color data range</label>
+    <span id="sliderMin">0</span>
+    <input id="sliderRange" name="sliderRange" type="range" min="0" max="550" step="10" value="550">
+    <span id="sliderMax"></span>
+    <input id="sliderText" type="text" value="550">
+  </div>
+  </div>
+
 </div>
+
 <script src="https://www.google.com/jsapi"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script src="commitmap.js"></script>
