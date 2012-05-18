@@ -8,6 +8,7 @@ def check_unresolved(locstr):
 def tests():
     assert(check_unresolved('nyc') == 'United States')
     assert(check_unresolved('perú') == 'Peru')
+    assert(check_unresolved('###############') == None)
     print 'tests pass'
 
 
@@ -22,7 +23,7 @@ fix_unresolved = {
     frozenset(['korea']): 'South Korea',
     frozenset(['istanbul', 'eskisehir', 'izmir']): 'Turkey',
     frozenset(['hyderabad', 'varanasi', 'bengaluru', 'ahmedabad', 'kerala', 'gandhinagar, gujarat']): 'India',
-    frozenset(['zurich', 'zürich', 'neuchatel', 'lucerne', 'paudex', 'stäfa']): 'Swizerland',
+    frozenset(['zurich', 'zürich', 'neuchatel', 'lucerne', 'paudex', 'stäfa']): 'Switzerland',
     frozenset(['méxico', 'méxico city']): 'Mexico',
     frozenset(['sapporo', 'osaka', 'yokohama', 'japanese''kagurazaka', 'kanagawa', 'nagoya', 'chiba']): 'Japan',
     frozenset(['göteborg', 'linköping', 'gothenburg']): 'Sweden',

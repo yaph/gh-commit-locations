@@ -3,9 +3,11 @@
 # withoud cities 14954 location string remain unresovled
 # with unique city names 6345 (number is not up to date) location string remain unresovled
 # with largest city name 4623 location string remain unresovled
+# with manually resolved locations 3118 location string remain unresovled
 
 import csv, json, re
 from geonamescache import GeonamesCache
+from loclists import check_unresolved
 
 commits_by_countries = {}
 countries_by_locstr = {}
@@ -56,7 +58,7 @@ def test_locs(locs):
 def determine_country(locstr, langcnt):
     """Try to determine country from given location string."""
 
-    locstr = re.sub(re_ws, ' ', re.sub(re_ignore, ' ', locstr))
+    locstr = re.sub(re_ws, ' ', re.sub(re_ignore, ' ', locstr)).strip()
 
     if locstr in countries_by_locstr:
         return countries_by_locstr[locstr]
@@ -68,7 +70,13 @@ def determine_country(locstr, langcnt):
             countries_by_locstr[locstr] = country
             return country
 
-    print('%s, %d' % (loc, langcnt))
+    # check manually resolved locations
+    country = check_unresolved(locstr.lower())
+    if country is not None:
+        countries_by_locstr[locstr] = country
+        return country
+
+    print('%s, %d' % (locstr, langcnt))
 
 
 fcsv = open('langcnt_by_loc.csv', 'rb')
