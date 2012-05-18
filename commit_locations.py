@@ -3,7 +3,7 @@
 # withoud cities 14954 location string remain unresovled
 # with unique city names 6345 (number is not up to date) location string remain unresovled
 # with largest city name 4623 location string remain unresovled
-# with manually resolved locations 3118 location string remain unresovled
+# with manually resolved locations 3333 location string remain unresovled
 
 import csv, json, re
 from geonamescache import GeonamesCache
