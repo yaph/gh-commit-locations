@@ -1,12 +1,14 @@
 # -*- coding: utf-8 -*-
 import re, operator
 locations = {}
-for line in open('unresovled_locations.txt','r'):
-    loc = line.strip().lower().capitalize()
+for line in open('unresolved_locations.txt','r'):
+    loc, cnt = line.rsplit(',', 1)
+    cnt = int(cnt.strip())
+    loc = loc.strip().lower()
     if '' == loc: continue
     if loc not in locations:
         locations[loc] = 0
-    locations[loc] += 1
+    locations[loc] += cnt
 
 locsorted = sorted(locations.iteritems(), key=operator.itemgetter(1), reverse=True)
 for loc, cnt in locsorted:
