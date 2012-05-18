@@ -1,6 +1,5 @@
 var query = null;
-// no cities var dataurl = 'https://docs.google.com/spreadsheet/ccc?key=0Ajfu-hBSP-VLdFlkbFpWYTBxQ3Z4Mjc4bWxtUE5zX1E ';
-var dataurl = 'https://docs.google.com/spreadsheet/ccc?key=0Ajfu-hBSP-VLdG9JYnFFUHJsOXNtYU5CUUtCTVRWc2c';
+var dataurl = 'https://docs.google.com/spreadsheet/ccc?key=0Ajfu-hBSP-VLdFlkbFpWYTBxQ3Z4Mjc4bWxtUE5zX1E ';
 
 var settings = {
     colorschemes: [
@@ -13,11 +12,11 @@ var settings = {
     types: ['relative', 'absolute'],
     type: 0,
     maxValue: {
-        'relative': 500,
+        'relative': 550,
         'absolute': 500000
     },
     query: {
-        'relative': 'SELECT A,E ORDER BY E DESC',
+        'relative': 'SELECT A,D ORDER BY D DESC',
         'absolute': 'SELECT A,B ORDER BY B DESC'
     },
     regions: {
