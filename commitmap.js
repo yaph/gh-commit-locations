@@ -80,8 +80,7 @@ function handleQueryResponse(response) {
             maxValue: settings.maxValue[settings.dataTypes[settings.dataType]]
         },
         datalessmapRegionColor: 'FFFFFF',
-        width:900,
-        height:500,
+        height:448,
         region: settings.mapRegions[settings.mapRegion]
     });
 

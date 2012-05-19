@@ -3,11 +3,14 @@
 <title>GitHub Commit Map</title>
 <link href="http://twitter.github.com/bootstrap/assets/css/bootstrap.css" rel="stylesheet">
 <style type="text/css">
+.container {height:500px;}
 select {width:200px;}
 .w300 {width:300px;float:left;}
-.form-horizontal .control-label {width:100px;}
+.form-horizontal .control-label {width:100px;padding-top:2px;}
 .form-horizontal .controls {margin-left: 120px;}
+label, select {font-size:.8em;height:24px;line-height:24px;}
 #sliderText {width:120px;}
+#sliderRangeLabel {display:inline;margin-right:10px;}
 </style>
 </head>
 <body>
@@ -85,12 +88,12 @@ select {width:200px;}
   </div>
 
   <div class="row">
-    <div id="map" style="width: 900px; height: 500px;" class="span12"></div>
+    <div id="map" class="span12"></div>
   </div>
 
   <div id="mapSlider" class="row">
   <div class="span12">
-    <label for="sliderRange">Set displayed color data range</label>
+    <label id="sliderRangeLabel" for="sliderRange">Set displayed color data range</label>
     <span id="sliderMin">0</span>
     <input id="sliderRange" name="sliderRange" type="range" min="0" max="550" step="10" value="550">
     <span id="sliderMax"></span>

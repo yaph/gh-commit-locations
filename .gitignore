@@ -1,3 +1,4 @@
+*.pyc
 .Rhistory
 *.csv
 *.txt
