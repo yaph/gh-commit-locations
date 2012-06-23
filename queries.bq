@@ -35,14 +35,6 @@ ORDER BY loccnt DESC
 #LIMIT 100;
 
 
-SELECT repository_language, LOWER(actor_attributes_location) as loc FROM [githubarchive:github.timeline]
-WHERE type="PushEvent"
-AND repository_language != ""
-AND actor_attributes_location != ""
-GROUP BY repository_language, loc
-LIMIT 10;
-
-
 SELECT actor_attributes_location as loc, COUNT(repository_language) AS langcnt, repository_language FROM [githubarchive:github.timeline]
 WHERE type="PushEvent"
 AND repository_language != ""

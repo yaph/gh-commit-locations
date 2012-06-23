@@ -9,6 +9,7 @@ import csv, json, re
 from geonamescache import GeonamesCache
 from loclists import check_unresolved
 
+unresolved_locations = []
 commits_by_countries = {}
 countries_by_locstr = {}
 gc = GeonamesCache()
@@ -76,7 +77,7 @@ def determine_country(locstr, langcnt):
         countries_by_locstr[locstr] = country
         return country
 
-    print('%s, %d' % (locstr, langcnt))
+    unresolved_locations.append('%s, %d' % (locstr, langcnt))
 
 
 fcsv = open('langcnt_by_loc.csv', 'rb')
@@ -115,3 +116,7 @@ writer.writerow(['Country', 'Commit Count', 'Commits per Capita', 'Commits per 1
 for c in commits_by_countries:
     writer.writerow([c, commits_by_countries[c]['commits'], commits_by_countries[c]['commits_per_capita'], commits_by_countries[c]['commits_per_100k'], countries_by_names[c]['population']])
 wcsv.close()
+
+uf = open('unresolved_locations.txt', 'w')
+uf.write('\n'.join(unresolved_locations))
+uf.close()
